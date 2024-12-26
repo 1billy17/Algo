@@ -1,46 +1,33 @@
-class Program
+internal class Program
 {
-    static void Main()
+    private static void Main()
     {
-        int[] nums = { 1, 2, 1, 3, 2, 5};
-        int[] result = SingleNumber(nums);
-        foreach (int el in result) {
-            Console.WriteLine(el);
-        }
+        int[] nums = { 1, 2, 1, 3, 2, 5 };
+        var result = SingleNumber(nums);
+        foreach (var el in result) Console.WriteLine(el);
     }
 
-    static int[] SingleNumber(int[] array)
+    private static int[] SingleNumber(int[] array)
     {
-        
-        int[] res = new int[2];
+        var res = new int[2];
         var countMap = new Dictionary<int, int>();
 
-        foreach (int el in array)
-        {
+        foreach (var el in array)
             if (countMap.ContainsKey(el))
-            {
                 countMap[el]++;
-            }
             else
-            {
                 countMap[el] = 1;
-            }
-        }
-        int index = 0;
+
+        var index = 0;
         foreach (var p in countMap)
-        {
             if (p.Value == 1)
             {
                 res[index] = p.Key;
                 index++;
 
-                if (index == 2)
-                {
-                    break;
-                }
+                if (index == 2) break;
             }
-        }
-        
+
         return res;
     }
 }
